@@ -30,18 +30,23 @@ ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
+
+As the name of the data set suggests, the ```dino``` dataset, when plotted, yields a graph that is of an image of a dinosaur.
+
+
+
 The following code allows us to calculate the correlation coefficient between y and x for the ```dino``` dataset, which we stored as ```dino_data``` after filtering the original data for just the ```dino``` dataset in the previous code:
 
 ```{r cor-dino}
 dino_data %>%
   summarize(r = cor(x, y))
 ```
+Because the correlation coefficient is extremely close to zero, it appears there is no meaningful correlation between x and y for the ```dino``` dataset. Considering that the data is intended to plot the shape of a dinosaur, and not represent any particular function, that should not be surprising.
+
 
 ### Exercise 3
 
-(Add code and narrative as needed. Note that the R chunks are labeled with `plot-star` and `cor-star` to provide spaces to place the code for plotting and calculating the correlation coefficient. To finish, clean up the narrative by removing these instructions.)
-
-Blah blah blah...
+To plot the ```star``` dataset, we can use almost the same code as we did to plot the ```dino``` dataset, with the notable difference of replacing any mentions of the ```dino``` dataset with the ```star``` dataset to access the new, desired dataset. The following code is the result of doing just that:
 
 ```{r plot-star}
 
