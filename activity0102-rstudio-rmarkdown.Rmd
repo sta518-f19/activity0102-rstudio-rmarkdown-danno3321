@@ -72,15 +72,26 @@ Again, since the data is meant to plot in the shape of a star, x and y have no r
 
 ### Exercise 4
 
-(Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
+To plot the data in the ```circle``` dataset, we can change out any mentions of "star" in the code from the previous exercise with "circle." The following code will plot y vs. x for the ```circle``` dataset.
 
-```{r}
+```{r plot-circle}
+circle_data <- datasaurus_dozen %>%
+  filter(dataset == "circle")
 
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
 
-```{r}
+The resulting graph takes on the shape of an elipse, though it appears there is a bit of outlying data with greater than average y values at roughly the median value for x.
 
+To calculate the correlation coefficient for this data set, we can once again use nearly identical code to that which we used for the ```star``` data set, swapping in the newly-created ```circle_data``` in place of the old ```star_data```, which results in the following code:
+```{r cor-circle}
+circle_data %>%
+  summarize(r = cor(x, y))
 ```
+
+The resulting _r_ value from the above calculation is almost equal to the value we calculated back in Exercise 2 with the ```dino``` dataset. This makes sense, as neither a circle nor a dinosaur shape would fit well with most forms of regression functions.
+
 
 ### Exercise 5
 
