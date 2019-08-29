@@ -49,14 +49,26 @@ Because the correlation coefficient is extremely close to zero, it appears there
 To plot the ```star``` dataset, we can use almost the same code as we did to plot the ```dino``` dataset, with the notable difference of replacing any mentions of the ```dino``` dataset with the ```star``` dataset to access the new, desired dataset. The following code is the result of doing just that:
 
 ```{r plot-star}
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
 
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 ```
 
-I'm some text, you should replace me with more meaningful text...
+
+Once again, the name of the data set gives us a pretty clear idea of what it is meant to look like. The ```star``` dataset, then, graphs in the shape of a star.
+
+
+
+Now, to calculate the correlation coefficient for the ```star``` dataset, we can make the same changes as described above to the corresponding code we used for the ```dino``` dataset, as follows:
 
 ```{r cor-star}
-
+star_data %>%
+  summarize(r = cor(x, y))
 ```
+
+Again, since the data is meant to plot in the shape of a star, x and y have no real correlation, and the correlation coefficient is very close to zero.
 
 ### Exercise 4
 
