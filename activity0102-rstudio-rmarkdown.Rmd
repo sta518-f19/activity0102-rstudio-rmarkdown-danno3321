@@ -15,7 +15,7 @@ library(datasauRus)
 
 ### Exercise 1
 
-(Type your answer to Exercise 1 here. This exercise does not require any R code.)
+Based on the help file, the ```datasaurus_dozen``` file contains 1846 rows of data and 3 columns of information stored per row. The variables included in the data frame are a "dataset" variable, which indicates which of the 13 datasets a particular row is from, and x and y values, so that each row can be place on a coordinate plane.
 
 ### Exercise 2
 
