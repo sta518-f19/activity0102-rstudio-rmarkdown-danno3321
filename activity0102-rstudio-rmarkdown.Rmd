@@ -2,7 +2,12 @@
 title: "Activity 1.2 - RStudio and R Markdown"
 author: "Adam Weaver"
 date: "8/29/2019"
-output: html_document
+output: 
+  html_document: 
+    fig_height: 10
+    fig_width: 10
+    highlight: tango
+    theme: cerulean
 ---
 
 ### Load packages
@@ -22,7 +27,7 @@ Based on the help file, the ```datasaurus_dozen``` file contains 1846 rows of da
 
 The following code allows us to first filter the total data in the ```datasaurus_dozen``` file to include just the ```dino``` data set, then plot y vs. x for the remaining data:
 
-```{r plot-dino, fig.height=3, fig.width=6}
+```{r plot-dino}
 dino_data <- datasaurus_dozen %>%
   filter(dataset == "dino")
 
@@ -82,7 +87,7 @@ ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-The resulting graph takes on the shape of an elipse, though it appears there is a bit of outlying data with greater than average y values at roughly the median value for x.
+The resulting graph takes on the shape of a circle, though it appears there is a bit of outlying data with greater than average y values at roughly the median value for x.
 
 To calculate the correlation coefficient for this data set, we can once again use nearly identical code to that which we used for the ```star``` data set, swapping in the newly-created ```circle_data``` in place of the old ```star_data```, which results in the following code:
 ```{r cor-circle}
@@ -114,3 +119,5 @@ datasaurus_dozen %>%
   summarize(r = cor(x, y)) %>%
   print(13)
 ```
+
+As we can see, all the data sets result in a correlation coefficient of nearly 0. This is because regression functions do not fit well with the shapes and patterns most of the data sets make. Even the data sets that trace linear shapes do not fit regression well, because the data is still scattered and spread widely, albeit into multiple lines.
