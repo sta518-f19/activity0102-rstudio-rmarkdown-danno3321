@@ -96,3 +96,21 @@ The resulting _r_ value from the above calculation is almost equal to the value 
 ### Exercise 5
 
 (Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, green C+.)
+
+To plot all the datasets at once, we can use the following code:
+```{r plot_all}
+ggplot(data = datasaurus_dozen, aes(x = x, y = y, color = dataset)) +
+  geom_point() +
+  facet_wrap(~ dataset, ncol = 3) +
+  theme(legend.position = "none")
+```
+
+This code generates an individual plot for each dataset, while also removing the legend that would otherwise appear. It also makes each individual dataset graph in its own color.
+
+To get the correlation coefficients, we can use the same calculation as we have in the previous exercises. But to get the correlation coefficients for all of the data, we need to have the code first pull from the datasaurus_dozen file as a whole, rather than just the specific desired dataset, then tell it to group like dataset rows so we get relevant results per dataset, and finally print all 13 lines. The following code does exactly that:
+```{r cor_all}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarize(r = cor(x, y)) %>%
+  print(13)
+```
