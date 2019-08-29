@@ -19,9 +19,8 @@ Based on the help file, the ```datasaurus_dozen``` file contains 1846 rows of da
 
 ### Exercise 2
 
-(The answers for this Exercise are given for you below. But you should clean up some of the narrative so that it only includes what you want to turn in.)
 
-First let's plot the data in the dino dataset:
+The following code allows us to first filter the total data in the ```datasaurus_dozen``` file to include just the ```dino``` data set, then plot y vs. x for the remaining data:
 
 ```{r plot-dino, fig.height=3, fig.width=6}
 dino_data <- datasaurus_dozen %>%
@@ -31,7 +30,7 @@ ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-And next calculate the correlation between `x` and `y` in this dataset:
+The following code allows us to calculate the correlation coefficient between y and x for the ```dino``` dataset, which we stored as ```dino_data``` after filtering the original data for just the ```dino``` dataset in the previous code:
 
 ```{r cor-dino}
 dino_data %>%
